@@ -232,7 +232,16 @@
                 "Mỗi ngày trôi\n qua đều nhẹ nhàng\n với em",
                 "Buồn vui gì\n cũng có anh\n bên cạnh",
                 "Anh muốn đi\n cùng em thêm\n nhiều năm nữa",
-                "Thương em\n rất nhều ❤"
+
+                "Từ những thứ bé nhỏ\n đến những điều\n lớn lao hơn",
+                "anh mong là tụi mình\n có thể cùng nhau\n mà cố gắng",
+
+                "Em ở đây",
+                "anh ở đây",
+                "để yêu, để thương.",
+                "Để là điều\n may mắn\n ta có được.",
+                "Yêu em, yêu cả\n cuộc sống qua em!",
+                "HAPPY NEW YEAR\n 2026",
             ];
 
             var currentTextIndex = 0;
@@ -391,8 +400,13 @@
                 }
 
                 if (countdownStage === "stable") {
+                    // 🚫 NẾU LÀ CÂU CUỐI → GIỮ MÃI, KHÔNG TAN
+                    if (currentTextIndex === countdownTexts.length - 1) {
+                        // khóa vĩnh viễn ở trạng thái stable
+                        return requestAnimationFrame(updateCountdownParticles);
+                    }
+
                     stableTime++;
-                    // Giữ nguyên trạng thái này trong STABLE_DURATION frame
                     if (stableTime > STABLE_DURATION) {
                         countdownStage = "dispersing";
                     }
